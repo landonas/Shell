@@ -1,4 +1,4 @@
-# Shell
+# jShell
 This is an old school project that I will be slowly doing a postmortem on. I am slowly adding new features and enhancing old ones. 
 
 To run please do the following:
