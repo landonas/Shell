@@ -40,10 +40,10 @@ public class jsh4{
 
             }
 
-			/*
-			 * Pipe method
-			 *
-			 */
+	/*
+	 * Pipe method
+	*
+	*/
 
             myCommand = myCommand.trim();
             String[] tokens = myCommand.split("[ \t\n]+");
