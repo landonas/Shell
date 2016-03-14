@@ -105,21 +105,8 @@ public class jsh4{
                 OutputStream stdin2 = processTwo.getOutputStream();
                 OutputStream stdin1 = processOne.getOutputStream();
 
-                // setup pipes wrong
-
-				/*
-				 * I think I did that part within my PipeThread class right? I will have to pass that boolean onto indicate if it should be open or no though.
-
-					Yup. Your PipeThread class looks good. And remember that you should never close System.out and System.err.
-
-					Im not sure what you mean launch another pipeThread, something like this? :
-					PipeThread out0 = new PipeThread(processOne.getInputStream(),processTwo.getOutputStream(), true);
-
- 					Yes, this is okay but you also need one that reads from processTwo and prints to System.out.
- 				*/
 
 
-                //only need 4
                 //p1 > p2 > sys out
                 //p2 > p
                 PipeThread p1out = new PipeThread(stdout1, stdin2, true);
@@ -135,15 +122,9 @@ public class jsh4{
                 p2Out.start();
                 p2Err.start();
 
-
-
-
-
                 //wait for the last process to finish
 
                 processTwo.waitFor();
-
-
 
                 //is this the right spot for the break you mentioned after the final?
                 continue;
@@ -303,7 +284,6 @@ public class jsh4{
 
             }
 
-            //make sure "if process" doesnt go here?
             else {
                 // ProcessBuilder is an object that knows how to create
                 // external processes like "ls -u"
@@ -363,15 +343,6 @@ public class jsh4{
                     continue;
                 }
 
-
-                // Input/Output relative to this process
-                // getErrorStream() gives an InputStream because the current
-                // process reads input from the created process's stderr
-                // getInputStream() gives an InputStream because the current
-                // process reads input from the created process's stdout
-                // getOutputStream() gives an OutputStream because the current
-                // process writes output into the created process's stdin
-                // System.err.println("Establishing streams to communicate with process...");
 
                 InputStream sstderr = jelly2.getErrorStream();
                 InputStream sstdout = jelly2.getInputStream();
